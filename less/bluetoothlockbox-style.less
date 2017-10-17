@@ -1,0 +1,417 @@
+//* Created by javaBoxer on 8/7/2017.
+@import "bootstrap";    // import minimum bootstrap: framework, mixins and other itmes.
+
+
+/* Developer Notes
+========================================================================== */
+
+//<editor-fold desc="Developer Notes">
+/* ==========================================================================
+Bootstrap LESS variables to reference
+
+@screen-xxxs          320px
+@screen-xxs           375px
+@screen-xs             480px;
+@screen-tablet         768px
+@screen-desktop        992px
+@screen-lg-desktop     1200px
+Custom iphone widths if needed:
+
+.make-xs-column = @screen-xs     =  480px;
+.make-sm-column = @screen-sm-min = 768px;
+.make-md-column = @screen-md-min = 992px;
+.make-lg-column = @screen-lg-min = 1200px;
+
+Custom variables to make using column mixin's possible and keep the DOM
+unpolluted with (col-md-4 col-lg-6, etc.)
+
+@phone-min: ~"(min-width: 480px)";
+@tablet-min: ~"(min-width: 768px)";
+@desktop-min: ~"(min-width: 992px)";
+@desktop-large-min: ~"(min-width: 1200px)";
+
+@phone-max: ~"(max-width: 480px)";
+@tablet-max: ~"(max-width: 768px)";
+@desktop-max: ~"(max-width: 992px)";
+@desktop-large-max: ~"(max-width: 1200px)";
+========================================================================== */
+
+//</editor-fold>
+
+
+/* Variable's
+========================================================================== */
+
+//<editor-fold desc="Variables">
+
+@font-roboto: "Roboto", sans-serif;
+@font-opensans: "Open Sans",sans-serif;
+
+@black: #000;
+@white: #fff;
+@orange: #fa0;
+@blue: #48c;
+
+@phone-min: ~"(min-width: 480px)";
+@tablet-min: ~"(min-width: 768px)";
+@desktop-min: ~"(min-width: 992px)";
+@desktop-large-min: ~"(min-width: 1200px)";
+
+@phone-max: ~"(max-width: 480px)";
+@tablet-max: ~"(max-width: 768px)";
+@desktop-max: ~"(max-width: 992px)";
+@desktop-large-max: ~"(max-width: 1200px)";
+
+//</editor-fold>
+
+
+/* Mixin'S
+========================================================================== */
+
+//<editor-fold desc="Mixin's">
+.rounded-corners (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+     border-radius: @radius;
+}
+//</editor-fold>
+
+
+/* Global'S
+========================================================================== */
+
+//<editor-fold desc="Global's">
+
+body {
+    color: inherit;
+}
+
+.page-wrapper.bluetooth-lockbox {
+    margin-top: 0;
+    
+    @media @tablet-max {
+        margin-top: 30px;
+    }
+}
+
+//</editor-fold>
+
+
+/* ==========================================================================
+****** Brochure Columns [3] ******
+========================================================================== */
+
+//<editor-fold desc="Brochure Columns">
+
+// look for .page-wrapper and a class with "lockbox" in the page wrapper
+// then a "box" to style.
+
+.products {
+    .product-wrapper-bluetooth {
+        &:last-child {
+            .product-image-wrapper {
+                
+                @media @tablet-min {
+                    margin-top: 90px;
+                }
+                
+                @media @desktop-min {
+                    margin-top: 144px;
+                }
+            }
+        }
+        
+        .product-image-wrapper {
+            @media @phone-max {
+                width: 100%;
+            }
+        }
+        .product-desc-wrapper {
+            @media @phone-max {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.page-wrapper[class*="lockbox"] {
+    font-family: @font-roboto;
+    
+    .box {
+        width: 100%;
+        float: left;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: lighten(@black, 20%);
+        overflow: hidden;
+        .rounded-corners();
+        
+        @media @desktop-min {
+            min-height: 275px;
+        }
+    }
+}
+
+.primary {
+    div[class$="wrapper"] {
+        &:last-child {
+            @media @tablet-min {
+                margin-top: 90px;
+            }
+    
+            @media @desktop-min {
+                margin-top: 144px;
+            }
+        }
+    }
+}
+
+
+// look for value ending in wrapper inside bluetooth-lockbox
+// each main section, image wrappers and key-value pair wrappers will get this margin
+.bluetooth-lockbox {
+    div[class$="wrapper"] {
+        //margin-bottom: 15px;
+    }
+}
+
+.page-title {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.product-wrapper-bluetooth {
+    @media @tablet-min {
+        min-height: 547px;
+    }
+    
+    &:first-child {
+        border-right: 1px solid lighten(@black, 85%);
+    }
+}
+
+.primary {
+    
+    .product-image-wrapper {
+        float: left;
+        width: 50%;
+        
+        img {
+            margin: 0 auto;
+        }
+    }
+    
+    .product-desc-wrapper {
+        float: left;
+        width: 50%;
+
+        span {
+            display: block;
+        }
+        
+        .product-desc {
+            font-size: 23px;
+            font-weight: 700;
+            line-height: 32px;
+            padding: 0 50px;
+            text-transform: uppercase;
+            
+            span:nth-child(2) {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            
+            @media @tablet-max {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    }
+    
+}
+
+.product-features {
+    margin-bottom: 25px;
+}
+
+.product-features-wrapper {
+    margin-bottom: 20px;
+    .product {
+        text-align: center;
+    }
+    
+    img {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+.thumbs {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.thumb-wrapper {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    
+    @media @tablet-min {
+        height: 150px;
+    }
+    
+    @media @desktop-min {
+        height: 225px;
+    }
+    
+    .thumb {
+        width: 20%;
+        float: left;
+    }
+    img {
+        float: left;
+        padding: 4px;
+    }
+}
+
+.content-1 {
+    .content-1-wrapper {
+        margin-bottom: 25px;
+        
+        h4 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            display: inline-block;
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            list-style: none;
+            margin: 0 3px 0 0;
+            text-transform: uppercase;
+            
+            &::after {
+                margin-left: 7px;
+                content: '|';
+            }
+        }
+    }
+}
+
+.product-details {
+    .features-title {
+        margin-bottom: 30px;
+    }
+    
+    h5 {
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        margin: 0 0 20px;
+        text-transform: uppercase;
+    }
+    
+    .product-video {
+        width: 100%;
+        display: none;
+        
+        @media @desktop-min {
+            display: block;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+    }
+    
+    .shackle {
+        float: left;
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+        
+        img {
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin: 0 0 15px;
+            text-transform: uppercase;
+        }
+        
+        @media @desktop-min {
+            width: 50%;
+        }
+    }
+    
+    .wallmount {
+        float: left;
+        width: 100%;
+        text-align: center;
+        
+        img {
+            margin-bottom: 20px;
+        }
+        
+        h4 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin: 0 0 15px;
+            text-transform: uppercase;
+        }
+        
+        @media @desktop-min {
+            width: 50%;
+        }
+    }
+}
+
+.icons-shop {
+    width: 100%;
+    height: 100px;
+    float: left;
+    margin-bottom: 40px;
+    
+    .icon {
+        float: left;
+        margin-right: 15px;
+    }
+}
+
+.product-details {
+    .make-sm-column(6);     // 768px (min)
+}
+
+.page-separator {
+    margin-bottom: 100px;
+}
+
+// GRID DEFINITION
+
+// ************ First Wrapper Column ************
+.product-wrapper-bluetooth {
+    .make-xs-column(12);
+    .make-sm-column(6);     // 768px (min)
+    
+}
+
+.product {
+    .make-sm-column(3);
+}
+
+
+//</editor-fold>
