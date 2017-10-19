@@ -1804,6 +1804,7 @@ body {
 }
 .item .item-title .construction-type {
   font-size: 16px;
+  color: #737373;
 }
 @media (min-width: 480px) and (max-width: 768px) {
   .item .item-title .construction-type {
@@ -1821,20 +1822,27 @@ body {
 .item .item-desc-wrapper {
   display: block;
   height: 60px;
-  padding-top: 20px;
+  padding-top: 12px;
   text-align: center;
-  background-color: #fafafa;
+  background-color: #f0f0f0;
 }
 .item .item-desc-wrapper .btn-view-details {
   display: none;
 }
-.item .item-desc-wrapper:hover .item-desc .text {
+.item .item-desc-wrapper:hover .item-desc {
   display: none;
 }
 .item .item-desc-wrapper:hover .btn-view-details {
   display: block;
 }
 .item .item-desc-wrapper .item-desc {
+  color: #5f5f5f;
+}
+.item .item-desc-wrapper .item-desc .packaged {
+  font-size: 14px;
+  font-weight: 500;
+}
+.item .item-desc-wrapper .item-desc .text {
   font-size: 12px;
 }
 @media (min-width: 768px) {
@@ -1843,7 +1851,6 @@ body {
   }
 }
 .item .item-desc-wrapper .btn-view-details {
-  margin-top: -10px;
   margin-bottom: 10px;
 }
 .item .item-desc-wrapper .btn-view-details .view-details {
@@ -1870,6 +1877,6 @@ body {
 }
 .item .item-desc-wrapper .btn-view-details .view-details:hover {
   color: #222;
-  background: #eee;
+  background: #d7f0dc;
 }
 /*# sourceMappingURL=chain-style.css.map */
